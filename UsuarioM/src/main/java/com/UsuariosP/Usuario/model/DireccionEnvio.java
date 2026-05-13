@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,13 +20,16 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
 public class DireccionEnvio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDireccion;
-    
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
     private String calle;
     private String numero;
     private String comuna;
@@ -32,8 +37,6 @@ public class DireccionEnvio {
     private String region;
     private String codigoPostal;
     private String referencia;
-    private String direccionPrincipal;
+    private Boolean direccionPrincipal;
     private Boolean activa;
-
-    
 }

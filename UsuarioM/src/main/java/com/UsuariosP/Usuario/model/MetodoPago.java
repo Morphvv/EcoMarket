@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,6 +26,10 @@ public class MetodoPago {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idMetodoPago;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
     private String tipoPago;
     private String proveedorPago;
     private String tokenPago;
@@ -31,7 +37,7 @@ public class MetodoPago {
     private String alias;
     private Date fechaExpiracion;
     private String titular;
-    private String activo;
+    private Boolean activo;
     private Boolean principal;
 }
 

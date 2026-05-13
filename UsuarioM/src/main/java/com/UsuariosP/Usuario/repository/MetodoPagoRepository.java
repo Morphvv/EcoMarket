@@ -9,4 +9,7 @@ import com.UsuariosP.Usuario.model.MetodoPago;
 public interface MetodoPagoRepository extends JpaRepository<MetodoPago, Long> {
     List<MetodoPago> findByPrincipalTrue();
     List<MetodoPago> findByActivoTrue();
+
+    List<MetodoPago> findByUsuarioId(Long usuarioId);
+    List<MetodoPago> findByUsuarioIdAndActivoTrue(Long usuarioId);
 }

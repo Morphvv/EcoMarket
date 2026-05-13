@@ -41,7 +41,7 @@ public class Usuario {
     private LocalDateTime fechaRegistro;
 
     @Column(nullable = false)
-    private String estadoCliente;
+    private String estadoUsuario;
     
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_usuario")
