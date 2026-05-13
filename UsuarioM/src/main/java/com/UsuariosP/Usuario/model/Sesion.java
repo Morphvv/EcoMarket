@@ -1,7 +1,11 @@
 package com.UsuariosP.Usuario.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -17,7 +21,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
 public class Sesion {
 
     @Id
@@ -28,11 +31,8 @@ public class Sesion {
 
     @Column(nullable = false, unique = true)
     private String tokenSesion;
-    private DateTime fechaInicio;
-    private DateTime fechaExpiracion;
-
-    @Enumerated(EnumType.STRING)
+    private LocalDateTime fechaInicio;
+    private LocalDateTime fechaExpiracion;
     private String estadoSesion;
-
-    
 }
+

@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -17,14 +18,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class MetodoPago {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idMetodoPago;
 
-    
     private String tipoPago;
     private String proveedorPago;
     private String tokenPago;
@@ -35,3 +34,4 @@ public class MetodoPago {
     private String activo;
     private Boolean principal;
 }
+

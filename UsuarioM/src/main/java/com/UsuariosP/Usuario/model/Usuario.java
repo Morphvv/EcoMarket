@@ -1,13 +1,15 @@
-package model;
+package com.UsuariosP.Usuario.model;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -19,39 +21,37 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "usuarios")
-
 public class Usuario {
     @Id
     private Long rut;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String nombre;
 
-    @Column(nullable=false, unique = true)
+    @Column(nullable = false)
     private String apellido;
 
-    @Column(nullable=false, unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String telefono;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     private LocalDateTime fechaRegistro;
 
-    @Column(nullable=false)
-    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private String estadoCliente;
     
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_usuario")
     private CuentaUsuario cuentaUsuario;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "usuario_id")
-    private List <DirrecionEnvio> direcciones = new ArrayList<>();
+    private List<DireccionEnvio> direcciones = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "usuario_id")
-    private List <MetodoPago> metodosPago = new ArrayList<>();
+    private List<MetodoPago> metodosPago = new ArrayList<>();
 }
