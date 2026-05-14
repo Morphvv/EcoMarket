@@ -18,14 +18,14 @@ public class SesionService {
     @Autowired
     private SesionRepository sesionRepository;
 
-    public Sesion crear (Sesion sesion){
+    public Sesion iniciarSesion (Sesion sesion){
         sesion.setFechaInicio(LocalDateTime.now());
         sesion.setEstadoSesion("ACTIVA");
 
         return sesionRepository.save(sesion);
     }
 
-    public List <Sesion> listar(){
+    public List <Sesion> listarS(){
         return sesionRepository.findAll();
     }
 

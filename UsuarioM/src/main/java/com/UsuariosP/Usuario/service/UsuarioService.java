@@ -41,6 +41,10 @@ public class UsuarioService {
         return usuarioRepository.save(existente);
     }
 
+    public Usuario buscarPorId(Long id){
+        return usuarioRepository.findById(id).orElse(null);
+    }
+
     public Usuario desactivar(Long id){
         Usuario existente = usuarioRepository.findById(id).orElse(null);
 
