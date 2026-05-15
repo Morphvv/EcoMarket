@@ -31,7 +31,7 @@ public class DireccionEnvioService {
     }
 
     public List<DireccionEnvio> listarPorUsuario(Long idUsuario){
-        return direccionEnvioRepository.findByUsuarioIdAndActivaTrue(idUsuario);
+        return direccionEnvioRepository.findByUsuarioRutAndActivaTrue(idUsuario);
     }
 
     public DireccionEnvio modificarDireccionEnvio(Long id, DireccionEnvio direccionEnvio){
@@ -57,7 +57,7 @@ public class DireccionEnvioService {
         DireccionEnvio existente = direccionEnvioRepository.findById(id).orElse(null);
 
         if (existente != null){
-            List<DireccionEnvio> direcciones = direccionEnvioRepository.findByUsuarioId(existente.getUsuario().getRut());
+            List<DireccionEnvio> direcciones = direccionEnvioRepository.findByUsuarioRut(existente.getUsuario().getRut());
             for (DireccionEnvio direccion : direcciones) {
                 direccion.setDireccionPrincipal(false);
                 direccionEnvioRepository.save(direccion);

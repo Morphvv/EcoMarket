@@ -32,7 +32,7 @@ public class MetodoPagoService {
     }
 
     public List<MetodoPago> listarPorUsuario(Long idUsuario){
-        return metodoPagoRepository.findByUsuarioIdAndActivoTrue(idUsuario);
+        return metodoPagoRepository.findByUsuarioRutAndActivoTrue(idUsuario);
     }
 
     public MetodoPago modificarMetodoPago(Long id, MetodoPago metodoPago){
@@ -58,7 +58,7 @@ public class MetodoPagoService {
         MetodoPago existente = metodoPagoRepository.findById(id).orElse(null);
 
         if (existente != null){
-            List<MetodoPago> metodos = metodoPagoRepository.findByUsuarioId(existente.getUsuario().getRut());
+            List<MetodoPago> metodos = metodoPagoRepository.findByUsuarioRut(existente.getUsuario().getRut());
             for (MetodoPago metodo : metodos) {
                 metodo.setPrincipal(false);
                 metodoPagoRepository.save(metodo);
