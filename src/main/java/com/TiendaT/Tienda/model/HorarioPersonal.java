@@ -1,4 +1,5 @@
-package com.TiendaT.Tienda.model;
+package com.TiendaP.Tienda.model;
+
 
 import java.time.LocalTime;
 
